@@ -1,0 +1,46 @@
+body {
+  margin: 0px;
+  font-family: Roboto, 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #212529;
+  text-align: left;
+  background-color: #f8fafc;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+ol, ul, dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.fit-viewport-height {
+  height: 100vh;
+}
+
+.entire-main {
+  display: flex;
+  height: calc(100% - 60px);
+
+  & > * {
+    overflow-y: scroll;
+    width: 100%;
+  }
+}

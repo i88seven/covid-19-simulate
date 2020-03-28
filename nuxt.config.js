@@ -1,65 +1,83 @@
+require('dotenv').config();
 
-export default {
-  mode: 'spa',
-  /*
-  ** Headers of the page
-  */
+const config = {
+  build: {
+    hardSource: process.env.HARD_SOURCE,
+  },
+  buildModules: [
+    '@nuxt/typescript-build',
+  ],
+  mode: "spa",
+  srcDir: 'client/',
+  typescript: {
+    typeCheck: true,
+    ignoreNotFoundWarnings: true
+  },
+  modules: [
+    // '@nuxtjs/axios',
+    '@nuxtjs/style-resources',
+    'nuxt-webfontloader',
+  ],
+  plugins: [
+    '@/plugins/element-ui.js',
+    '@/plugins/babel-polyfill.js',
+    '@/plugins/i18n',
+    '@/plugins/focus',
+    '@/plugins/notify',
+    // '@/plugins/api',
+    // '@/plugins/axios-accessor',
+    // '@/plugins/axios',
+    // '@/plugins/auth',
+    // '@/plugins/store_proxy',
+  ],
+  webfontloader: {
+    custom: {
+      families: [
+        'Roboto',
+        'Noto Sans JP'
+      ],
+      urls: [
+        'https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap',
+        'https://fonts.googleapis.com/css?family=Noto+Sans+JP:400,700&display=swap&subset=japanese'
+      ]
+    }
+  },
+  css: [
+    'element-ui/lib/theme-chalk/index.css',
+    '@/assets/sass/element-variables.scss',
+    '@/assets/sass/main.scss',
+  ],
   head: {
-    title: process.env.npm_package_name || '',
+    titleTemplate: 'COVID-19 Simulate',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { name: 'msapplication-TileColor', content: '#da532c' },
+      { name: 'theme-color', content: '#ffffff' },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/img/apple-touch-icon.png' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/img/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/img/favicon-16x16.png' },
+      { rel: 'manifest', href: '/img/manifest.json' },
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
-  css: [
-    'element-ui/lib/theme-chalk/index.css'
-  ],
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-    '@/plugins/element-ui'
-  ],
-  /*
-  ** Nuxt.js dev-modules
-  */
-  buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
-  ],
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
-  ],
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
-  axios: {
+  styleResources: {
+    scss: ['@/assets/sass/_variables.scss']
   },
   /*
-  ** Build configuration
-  */
+   ** Build configuration
+   */
   build: {
-    transpile: [/^element-ui/],
     /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {
+      if (ctx.isDev && ctx.isClient) {
+        config.devtool = 'inline-source-map';
+      }
     }
   }
-}
+};
+
+export default config;

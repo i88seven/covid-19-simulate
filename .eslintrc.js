@@ -4,14 +4,22 @@ module.exports = {
     browser: true,
     node: true
   },
+  parser:  'vue-eslint-parser',
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@typescript-eslint/parser',
   },
   extends: [
-    '@nuxtjs',
-    'plugin:nuxt/recommended'
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/recommended",
   ],
-  // add your custom rules here
+  plugins: [
+    'vue'
+  ],
   rules: {
+    "semi": ["error", "always"],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/camelcase": ["error", {properties: "never"}],
+    "max-len": ["error", { "code": 90 }]
   }
 }

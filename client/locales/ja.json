@@ -1,0 +1,10 @@
+{
+  "error": "エラー",
+  "id": "ID",
+  "load-error": "データの読み込みに失敗しました",
+  "loading": "読込中...",
+  "help": {
+    "require-input": "{object}を入力してください",
+    "max-length-for-input-area": "{inputArea} は {maxLength}文字 まで入力できます"
+  }
+}
