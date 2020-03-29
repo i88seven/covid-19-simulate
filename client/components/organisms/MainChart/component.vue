@@ -41,10 +41,6 @@ class MainChart extends Vue {
       responsive: true,
       maintainAspectRatio: false,
       legend: {
-        // display: false
-        onClick(event, legendItem) {
-          return;
-        },
         fullWidth: false,
         labels: {
           boxWidth: 20,
@@ -89,8 +85,6 @@ class MainChart extends Vue {
               autoSkip: true,
               fontColor: FONT_COLOR,
               fontSize: 14,
-              min: 0,
-              max: 100
             },
           },
         ],
