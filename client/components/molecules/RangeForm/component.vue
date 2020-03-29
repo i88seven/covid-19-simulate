@@ -21,12 +21,13 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { Values, Options } from './constants';
+import { RangeValues } from '~/utils/predict';
+import { Options } from './constants';
 
 @Component
 class RangeForm extends Vue {
   @Prop()
-  value!: Values;
+  value!: RangeValues;
 
   @Prop({ default: { min: 0, max: 100 }})
   options?: Options;
