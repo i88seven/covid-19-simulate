@@ -138,6 +138,6 @@ h3 {
 
 .condition-area {
   float: left;
-  margin: 0px 12px;
+  margin: 0px 20px;
 }
 </style>
