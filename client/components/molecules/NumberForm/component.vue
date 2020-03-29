@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <label>{{ label }}</label>
+  <div class="number-form">
+    <label class="form-label">{{ label }}</label>
     <el-input-number
       v-model="model"
       :min="options.min"
@@ -52,3 +52,13 @@ class NumberForm extends Vue {
 
 export default NumberForm;
 </script>
+
+<style scoped>
+.number-form {
+  margin-bottom: 8px;
+}
+
+.form-label {
+  min-width: 140px;
+}
+</style>
